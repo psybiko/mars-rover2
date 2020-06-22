@@ -2,14 +2,13 @@ const Position = require("../models/Position");
 const Direction = require("../models/Direction");
 
 class Rover {
-  constructor(x, y, direction) {
-    this.x = x;
-    this.y = y;
+  constructor(position, direction) {
+    this.position = position;
     this.direction = direction;
   }
 
   static create(x, y, dir) {
-    const position = Position.create(x, y);
+    const position = new Position(x, y);
     const direction = Direction.create(dir);
     return new Rover(position, direction);
   }
@@ -42,6 +41,12 @@ class Rover {
     } else if (i === "M") {
       this.moveForward();
     }
+  }
+
+  instructions(instruction) {
+    return instruction
+      .split("")
+      .forEach((instruction) => this.instruction(instruction));
   }
 
   display() {
