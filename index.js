@@ -22,7 +22,7 @@ Expected Output:
 const rover1 = Rover.create(1, 2, "N");
 rover1.instructions("LMLMLMLMM");
 rover1.turnLeft;
-rover1.display();
+console.log(rover1.display());
 const rover2 = Rover.create(3, 3, "E");
 rover2.instructions("MMRMMRMRRM");
-rover2.display();
+console.log(rover2.display());

@@ -50,7 +50,7 @@ class Rover {
   }
 
   display() {
-    return `${this.x} ${this.y} ${this.direction};`;
+    return `${this.position.x} ${this.position.y} ${this.direction.value}`;
   }
 }
 
