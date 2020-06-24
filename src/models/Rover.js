@@ -1,5 +1,6 @@
 const Position = require("../models/Position");
 const Direction = require("../models/Direction");
+const Grid = require("../models/Grid");
 
 class Rover {
   constructor(position, direction) {
@@ -8,6 +9,11 @@ class Rover {
   }
 
   static create(x, y, dir) {
+    if (x > 5 || y > 5) {
+      throw new Error(
+        "Rover's position cannot exceed the plateau's boundaries"
+      );
+    }
     const position = new Position(x, y);
     const direction = Direction.create(dir);
     return new Rover(position, direction);
