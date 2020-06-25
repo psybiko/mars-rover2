@@ -9,11 +9,6 @@ class Rover {
   }
 
   static create(x, y, dir) {
-    if (x > 5 || y > 5) {
-      throw new Error(
-        "Rover's position cannot exceed the plateau's boundaries"
-      );
-    }
     const position = new Position(x, y);
     const direction = Direction.create(dir);
     return new Rover(position, direction);
@@ -27,6 +22,20 @@ class Rover {
     this.direction.turnLeft();
   }
 
+  // roverBoundary() {
+  //   this.position.validateBoundary;
+  // }
+
+  // checks if the initial position is valid
+  validateBoundary() {
+    if (this.position.x > 5 || this.position.y > 5) {
+      throw new Error("Rover's position is out of bounds");
+    } else if (this.position.x < 0 || this.position.y < 0) {
+      throw new Error("Rover's position cannot be smaller than 0, 0");
+    }
+  }
+
+  // checks if the rover can move
   moveForward() {
     if (this.direction.value === "N") {
       this.position.y += 1;
@@ -37,6 +46,7 @@ class Rover {
     } else if (this.direction.value === "E") {
       this.position.x += 1;
     }
+    this.validateBoundary();
   }
 
   instruction(i) {
