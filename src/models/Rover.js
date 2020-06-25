@@ -22,10 +22,6 @@ class Rover {
     this.direction.turnLeft();
   }
 
-  // roverBoundary() {
-  //   this.position.validateBoundary;
-  // }
-
   // checks if the initial position is valid
   validateBoundary() {
     if (this.position.x > 5 || this.position.y > 5) {
